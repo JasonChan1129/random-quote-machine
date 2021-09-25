@@ -38,7 +38,8 @@ class Links extends React.Component {
 class Quote extends React.Component {
     render() {
         return (
-            <div id='quote' style={ this.props.style }>
+            <div id='quote' style={ this.props.style } onAnimationEnd={this.props.onAnimationEnd()}
+            className={ this.props.fade }>
                 <div id='text'>
                     <p>" { this.props.text }</p>
                 </div>
@@ -55,7 +56,9 @@ class QuoteBoard extends React.Component {
         super(props)
         this.state = {
             currentIndex: 0,
+            fade: false
         }
+        // this.quote = React.createRef();
     }
 
     handleClick() {
@@ -67,6 +70,7 @@ class QuoteBoard extends React.Component {
             this.setState(
                 {
                     currentIndex: 0,
+                    fade: true,
                 }
             )
         }
@@ -74,10 +78,19 @@ class QuoteBoard extends React.Component {
             this.setState(
                 {
                     currentIndex: currentIndex,
+                    fade: true,
                 }
             )
         }
+        // let quote = this.quote.current;
+        // quote.childNodes[0].classList.toggle('fade');
+    }
 
+    onAnimationEnd() {
+        // this.setState({
+        //     fade: false,
+        // })
+        console.log('end')
     }
 
     render() {
@@ -87,12 +100,13 @@ class QuoteBoard extends React.Component {
             backgroundColor: data[this.state.currentIndex].color
         }
         let styleC = {
-            color: data[this.state.currentIndex].color
+            color: data[this.state.currentIndex].color,
         }
         return (
-            <div id='container' style={ styleBC }>
-                <div id='quote-box'>
-                    <Quote text = { text } author = { author } style={ styleC }/>
+            <div id='container' style={ styleBC } >
+                <div id='quote-box' ref={ this.quote}>
+                    <Quote text = { text } author = { author } style={ styleC }
+                    onAnimationEnd={() => this.onAnimationEnd()} fade={'fade' ? this.state.fade : ''}/>
                     <div id='button-group'>
                         <Links style={ styleBC }/>
                         <NextQuote style={ styleBC } 

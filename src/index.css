@@ -11,6 +11,7 @@ body,
   justify-content: center;
   align-items: center;
   height: 100%;
+  transition: background-color 1s;
 }
 
 #quote-box {
@@ -83,14 +84,14 @@ body,
 }
 
 /* .fade {
-  animation: fade 2s;
+  animation: fade 3s;
 }
 
 @keyframes fade {
-  from {
-    opacity: 0.3;
+  0% {
+    opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
   }
 } */
