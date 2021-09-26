@@ -16,6 +16,7 @@ body,
 
 #quote-box {
   background-color: white;
+  /* height: calc(100vh / 3); */
   width: calc(100vw / 3);
 }
 
@@ -29,7 +30,8 @@ body,
   margin: 0 10% 0;
   text-align: center;
   font-size: 2rem;
-  margin-bottom: -2.5vw;
+  position: relative;
+  top: 1rem;
 }
 
 #author {
@@ -37,7 +39,7 @@ body,
   justify-content: flex-end;
   margin-right: 2vw;
   margin-bottom: 1.5vw;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 #button-group {
@@ -53,8 +55,8 @@ body,
 #tweet-quote > button {
   color: white;
   margin-right: 0.75vw;
-  width: 2.5vw;
-  height: 2.5vw;
+  width: 2rem;
+  height: 2rem;
   text-align: center;
   border-radius: 3px;
   border: none;
@@ -67,7 +69,7 @@ body,
   display: inline-block;
   margin-right: 2vw;
   color: white;
-  height: 2.5vw;
+  height: 2rem;
   text-align: center;
   border-radius: 3px;
   padding: 0 1vw 0;
@@ -95,5 +97,25 @@ body,
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #quote-box {
+    width: 90vw;
+  }
+
+  html,
+  body,
+  #root {
+    font-size: 17.5px;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  html,
+  body,
+  #root {
+    font-size: 30px;
   }
 }
