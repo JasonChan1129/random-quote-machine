@@ -38,8 +38,8 @@ class Links extends React.Component {
 class Quote extends React.Component {
     render() {
         return (
-            <div id='quote' style={ this.props.style } onAnimationEnd={this.props.onAnimationEnd()}
-            className={ this.props.fade }>
+            <div id='quote' style={ this.props.style } className={ this.props.fade }
+            onAnimationEnd = {() => this.props.onAnimationEnd()}>
                 <div id='text'>
                     <p>" { this.props.text }</p>
                 </div>
@@ -58,7 +58,6 @@ class QuoteBoard extends React.Component {
             currentIndex: 0,
             fade: false
         }
-        // this.quote = React.createRef();
     }
 
     handleClick() {
@@ -82,15 +81,12 @@ class QuoteBoard extends React.Component {
                 }
             )
         }
-        // let quote = this.quote.current;
-        // quote.childNodes[0].classList.toggle('fade');
     }
 
     onAnimationEnd() {
-        // this.setState({
-        //     fade: false,
-        // })
-        console.log('end')
+        this.setState({
+            fade: false,
+        })
     }
 
     render() {
@@ -104,14 +100,13 @@ class QuoteBoard extends React.Component {
         }
         return (
             <div id='container' style={ styleBC } >
-                <div id='quote-box' ref={ this.quote}>
+                <div id='quote-box'>
                     <Quote text = { text } author = { author } style={ styleC }
-                    onAnimationEnd={() => this.onAnimationEnd()} fade={'fade' ? this.state.fade : ''}/>
+                    fade = { this.state.fade ? 'fade' : '' } 
+                    onAnimationEnd = {() => this.onAnimationEnd()}/>
                     <div id='button-group'>
                         <Links style={ styleBC }/>
-                        <NextQuote style={ styleBC } 
-                        onClick = {() => this.handleClick()}
-                        />
+                        <NextQuote style={ styleBC } onClick = {() => this.handleClick()}/>
                     </div>
                 </div>
             </div>
